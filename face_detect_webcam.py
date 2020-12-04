@@ -16,7 +16,7 @@ cv2.moveWindow('frame', 0, 0)
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 def detect_face(img):
     face_img = img.copy()
-    face_rects = face_cascade.detectMultiScale(face_img,scaleFactor=1.2, minNeighbors=5) 
+    face_rects = face_cascade.detectMultiScale(face_img, scaleFactor=1.2, minNeighbors=5)
     for (x,y,w,h) in face_rects:
         cv2.rectangle(face_img, (x,y), (x+w,y+h), (0,255,0), 10)
     return face_img
