@@ -15,7 +15,6 @@ haar_cascade = cv.CascadeClassifier('haar_face.xml')
 features = []
 labels = []
 
-
 def create_train():
   for person in people:
     path = os.path.join(DIR, person)
@@ -38,18 +37,13 @@ create_train()
 
 features = np.array(features, dtype='object')
 labels = np.array(labels)
-
 # print(f'Length of the features = {len(features)}')
 # print(f'Length of the labels = {len(labels)}')
 
 face_recognizer = cv.face.LBPHFaceRecognizer_create()
-
 # train the recognizer on the features list and the labels list
 face_recognizer.train(features, labels)
 
 face_recognizer.save('face_trained.yml')
 np.save('features.npy', features)
 np.save('labels.npy', labels)
-
-
-
